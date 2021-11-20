@@ -2,6 +2,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:guided_app/question.dart';
 
 void main() {
   runApp(MyApp());
@@ -10,18 +11,18 @@ void main() {
 class MyApp extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return MyAppState();
+    return _MyAppState();
   }
 }
 
-class MyAppState extends State<MyApp> {
-  var questionIndex = 0;
+class _MyAppState extends State<MyApp> {
+  var _questionIndex = 0;
 
   void answerQuestion() {
     setState(() {
-      questionIndex += 1;
+      _questionIndex += 1;
     });
-    print(questionIndex);
+    print(_questionIndex);
   }
 
   @override
@@ -37,25 +38,7 @@ class MyAppState extends State<MyApp> {
       ),
       body: Column(
         children: [
-          Text(questions[questionIndex]),
-          ElevatedButton(
-            onPressed: () {
-              answerQuestion();
-            },
-            child: Text('Answer 1'),
-          ),
-          ElevatedButton(
-            onPressed: () {
-              answerQuestion();
-            },
-            child: Text('Answer 2'),
-          ),
-          ElevatedButton(
-            onPressed: () {
-              answerQuestion();
-            },
-            child: Text('Answer 3'),
-          ),
+          Question(questions[_questionIndex]),
         ],
       ),
     ));
